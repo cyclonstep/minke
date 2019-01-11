@@ -21,7 +21,7 @@
 # 4. Move all sentences based on delimiter ('.') into templated JSON designated spot
 # 5. Export to file or move to database handler
 
-import os.path
+import os
 import ebooklib
 
 class FileHandler:
@@ -30,5 +30,16 @@ class FileHandler:
         self.ext = ext,
         self.size = size
     
-    def open (self, name):
-        book = ebooklib.epub.read_epub()
+    def open (self, path):
+        exists = os.path.isfile(path)
+        if exists:
+            book = ebooklib.epub.read_epub(path)
+
+    def isExists (self, path):
+        assert os.path.isfile(path), "File is not exists"
+        return
+    
+    def isDesignatedExt (self, path):
+        head, tail = os.path.split(path)
+        assert 
+        
